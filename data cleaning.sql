@@ -1,3 +1,5 @@
+----------------------------------------------DATA CLEANING--------------------------------------------------------------------
+
 use hr
  Select  * from hr_res
  
@@ -41,6 +43,9 @@ SET sql_safe_updates = 0;
     
     SELECT min(age),max(age) from hr_res
     Select * from hr_res
+
+-------------------------------------------------DATA ANALYSIS--------------------------------------------------------------------------
+
     
     ------GENDER BREAKDOWN--------------------------------------------
     SELECT  gender, COUNT(*) AS count from hr_res
@@ -73,7 +78,7 @@ SET sql_safe_updates = 0;
     GROUP BY location
     
     -------AVERAGE LENGTH OF EMPLOYMENT WHO ARE TERMINATED-----------
-    SELECT ROUND ( AVG(year(termdate) - year(hire_date)),0) as 		 length_of_emp
+    SELECT ROUND ( AVG(year(termdate) - year(hire_date)),0) as  length_of_emp
     from hr_res
     Where termdate is not null and termdate <= curdate()
      
@@ -106,7 +111,7 @@ SET sql_safe_updates = 0;
             ORDER BY termination_rate DESC
             
             --------------DISTRUBUTION EMPLOYEE ACROSS LOCATION--------------------------------------------
-		SELECT location_state, COUNT(*) as count
+	SELECT location_state, COUNT(*) as count
         FROM hr_res
         WHERE termdate IS NULL
         GROUP BY location_state
@@ -140,7 +145,8 @@ SET sql_safe_updates = 0;
      FROM hr_res
      WHERE termdate IS NOT NULL AND termdate <= curdate()
      GROUP BY department 
-      ORDER BY avg_tenure 
+
+
      
      
     
